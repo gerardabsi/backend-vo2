@@ -9,9 +9,8 @@ export interface ITransaction extends ITimeStampedDocument {
   contractId: string;
   description: string;
   value: string;
-  time: string;
   isImported: string;
-  isDeleted: string;
+  isDeleted: boolean;
 }
 
 interface ITransactionModel extends Model<ITransaction> { }

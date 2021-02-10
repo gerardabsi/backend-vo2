@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Service",
+    "version": "1.0.0",
+    "description": "API Service endpoints",
+    "contact": {
+      "email": "gerard.absi90@gmail.com",
+      "name": "Gerard Absi"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Transaction",
+      "description": "Transactions APIs"
+    }
+  ],
+  "paths": {
+    "/transaction": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Get all transactions in database",
+        "operationId": "transaction-filter",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "contractId",
+            "schema": {
+              "type": "number",
+              "default": "17689"
+            },
+            "description": "Number containing the contract id to filter"
+          },
+          {
+            "in": "query",
+            "name": "startDate",
+            "schema": {
+              "type": "string",
+              "default": "2021-02-01"
+            },
+            "description": "String containing the start date"
+          },
+          {
+            "in": "query",
+            "name": "endDate",
+            "schema": {
+              "type": "string",
+              "default": "2021-02-20"
+            },
+            "description": "String containing the end date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "transaction": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/BookSchema"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Add a transaction to the database",
+        "operationId": "transaction-add",
+        "requestBody": {
+          "description": "Add new transaction",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftTransactionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "transaction was added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transactionId",
+            "schema": {
+              "type": "string",
+              "default": "6023e555afb2a957f8c37b63"
+            },
+            "required": true
+          }
+        ],
+        "summary": "Update transaction in database",
+        "operationId": "transaction-update",
+        "requestBody": {
+          "description": "Update transaction",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftTransactionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "transaction was added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transactionId",
+            "schema": {
+              "type": "string",
+              "default": "6023e555afb2a957f8c37b63"
+            },
+            "required": true
+          }
+        ],
+        "summary": "Delete transaction from database",
+        "operationId": "transaction-delete",
+        "responses": {
+          "200": {
+            "description": "transaction was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DraftTransactionSchema": {
+        "type": "object",
+        "properties": {
+          "contractId": {
+            "type": "number",
+            "example": 17689
+          },
+          "description": {
+            "type": "string",
+            "example": "Rent payment"
+          },
+          "value": {
+            "type": "number",
+            "example": 100
+          }
+        }
+      },
+      "BookSchema": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "5d7224d3b40b1a1a046697dd"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2021-02-10T13:53:25.280+00:00"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2021-02-10T13:53:25.280+00:00"
+          },
+          "time": {
+            "type": "date",
+            "example": "2021-02-10T13:53:25.280+00:00"
+          },
+          "isImported": {
+            "type": "boolean",
+            "example": false
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DraftTransactionSchema"
+          }
+        ]
+      }
+    }
+  }
+}
