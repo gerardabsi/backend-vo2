@@ -67,7 +67,7 @@
                     "transaction": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/BookSchema"
+                        "$ref": "#/components/schemas/TransactionSchema"
                       }
                     }
                   }
@@ -103,7 +103,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookSchema"
+                  "$ref": "#/components/schemas/TransactionSchema"
                 }
               }
             }
@@ -150,7 +150,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookSchema"
+                  "$ref": "#/components/schemas/TransactionSchema"
                 }
               }
             }
@@ -186,7 +186,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookSchema"
+                  "$ref": "#/components/schemas/TransactionSchema"
                 }
               }
             }
@@ -220,7 +220,7 @@
           }
         }
       },
-      "BookSchema": {
+      "TransactionSchema": {
         "type": "object",
         "properties": {
           "_id": {
