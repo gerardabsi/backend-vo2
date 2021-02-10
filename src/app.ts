@@ -4,17 +4,18 @@ import express, { Request, Response, NextFunction } from 'express';
 import ApplicationError from './errors/application-error';
 import routes from './routes';
 
-const app = express();
+const application = express();
+application.disable('x-powered-by');
 
-app.use(compression());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+application.use(compression());
+application.use(bodyParser.json());
+application.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('port', process.env.PORT || 3001);
+application.set('port', process.env.PORT || 3001);
 
-app.use(routes);
+application.use(routes);
 
-app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
+application.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
   if (res.headersSent) {
     return next(err);
   }
@@ -25,4 +26,4 @@ app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction)
   });
 });
 
-export default app;
+export default application;
