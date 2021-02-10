@@ -4,9 +4,9 @@ This is a Typescript NodeJS RestAPI with CRUD Transactions apis
 Technologies added
 * **[Mongo Connection Helper](https://github.com/gerardabsi/backend-vo2/blob/master/src/mongo-connection.ts)** - A common MongoDB helper class .
 * **Joi** - For declarative payload validation
-* **[Middleware for easier async/await](https://github.com/gerardabsi/backend-vo2/blob/master/src/middleware/request-middleware.ts)** - Error Hander.
-* **[OpenAPI 3.0 Spec](https://github.com/gerardabsi/backend-vo2/blob/master/openapi.json)** - Swagger Documentation `http://localhost:3001/dev/api-docs`
-* **[.env file for configuration](#environment)**
+* **[Middleware](https://github.com/gerardabsi/backend-vo2/blob/master/src/middleware/request-middleware.ts)** - Error Hander.
+* **[OpenAPI](https://github.com/gerardabsi/backend-vo2/blob/master/openapi.json)** - Swagger Documentation `http://localhost:3001/dev/api-docs`
+* **[.env](#environment)**
 * **[Winston Logger](#logging)**
 * **ESLINT** - ESLINT for Linting.
 * **Jest** - For Testing
