@@ -1,6 +1,8 @@
 # Backend VO2
 This is a Typescript NodeJS RestAPI with CRUD Transactions apis
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gerardabsi_backend-vo2&metric=alert_status)](https://sonarcloud.io/dashboard?id=gerardabsi_backend-vo2)
+
 Technologies added
 * **[Mongo Connection Helper](https://github.com/gerardabsi/backend-vo2/blob/master/src/mongo-connection.ts)** - A common MongoDB helper class .
 * **Joi** - For declarative payload validation
